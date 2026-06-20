@@ -4,7 +4,7 @@
 
 ## Chapters
 
-- [Interface Contracts and Decoupling Strategies](./Chapter-20-Interface-Contracts/)
-- [Dependency Processing and Event-Driven Pipelines](./Chapter-21-Dependency-Processing/)
-- [Behavioral Automation and Flow Management](./Chapter-22-Behavioral-Automation/)
-- [Data Migration and Version Control Systems](./Chapter-23-Data-Migration/)
+- [Interface Contracts and Decoupling Strategies](./Chapter-20-Interface-Contracts/Readme.md)
+- [Dependency Processing and Event-Driven Pipelines](./Chapter-21-Dependency-Processing/Readme.md)
+- [Behavioral Automation and Flow Management](./Chapter-22-Behavioral-Automation/Readme.md)
+- [Data Migration and Version Control Systems](./Chapter-23-Data-Migration/Readme.md)
