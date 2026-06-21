@@ -108,5 +108,54 @@ In the larger context of the course, mastering inheritance and polymorphism in V
 
 By mastering these topologies in Chapter 2, you stop being a "vibe coder" who copy-pastes scripts and start being a **Systems Architect** who designs scalable, professional-grade game engines.
 
+---
+
+### Syntax Workshop: Polymorphism in the Console
+This workshop lets you see how one command ("Attack") creates different behaviors depending on whether you are an Orc or a Ghost.
+
+#### 1. The Exercise
+Create a file `PolymorphismDemo.cs`. You can paste the Base Class and Child Classes directly into this file (Unity allows multiple classes in one file if they aren't marked `public` or match the filename—for simplicity, you can make the base class `public` and the others plain classes).
+
+```csharp
+using UnityEngine;
+using System.Collections.Generic;
+
+public abstract class Enemy : MonoBehaviour {
+    public abstract void Attack();
+}
+
+public class Orc : Enemy {
+    public override void Attack() { Debug.Log("Orc: SWINGS CLUB!"); }
+}
+
+public class Ghost : Enemy {
+    public override void Attack() { Debug.Log("Ghost: DRAINS SOUL!"); }
+}
+
+public class PolymorphismDemo : MonoBehaviour {
+    void Start() {
+        List<Enemy> enemies = new List<Enemy>();
+        
+        // We add different types to a list of the BASE type!
+        enemies.Add(gameObject.AddComponent<Orc>());
+        enemies.Add(gameObject.AddComponent<Ghost>());
+
+        foreach (Enemy e in enemies) {
+            e.Attack(); // Same command, different behavior
+        }
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach to a GameObject.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** The Console will log: `Orc: SWINGS CLUB!` then `Ghost: DRAINS SOUL!`. The base type `Enemy` knew *exactly* which specialized method to call.
+
+#### 3. Common Beginner Errors
+*   **"Missing override":** If your base class marks a method as `abstract`, you **must** use the `override` keyword in your child class. If you forget, the compiler will refuse to build, saying the class is "abstract" and cannot be used until the method is implemented.
+*   **"Cannot create instance of abstract class":** You cannot say `new Enemy()`. An `abstract` class is a **template**, not a complete object. You can only create specific "children" like `new Orc()`.
+
+---
 
 ### [Next: Method Overriding, Virtual/Abstract Execution Contracts](/Volume-0-Foundations/Chapter-2-OOP-Blueprint-and-Syntax/Method-Overriding-Virtual-Abstract-Execution-Contracts.md)

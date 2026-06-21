@@ -128,5 +128,41 @@ Mastering this distinction in **Volume Zero** is the prerequisite for understand
 
 By understanding **Static vs. Instance** in Chapter 2, you move from being a "vibe coder" who doesn't know where their data is, to a **Systems Architect** who knows exactly which pieces of information define an individual entity and which pieces define the world itself.
 
+---
+
+### Syntax Workshop: The Shared Clock
+This workshop explores how `static` data acts as a single, shared "truth" across all instances.
+
+#### 1. The Exercise
+Create a script `StaticDemo.cs`. Attach it to two different GameObjects in your scene.
+
+```csharp
+using UnityEngine;
+
+public class StaticDemo : MonoBehaviour 
+{
+    public static int sharedClock = 0; // SHARED: One clock for all
+    public int personalDiary = 0;      // INSTANCE: One diary per person
+
+    void Start() 
+    {
+        sharedClock++;
+        personalDiary++;
+        
+        Debug.Log("Shared Clock: " + sharedClock + " | Personal Diary: " + personalDiary);
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach this script to *two* different GameObjects in your scene.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** In the Console, you will see that `personalDiary` is always `1` for both objects, but `sharedClock` becomes `1` then `2`. The instances "shared" the same bucket for the clock, but had their own for the diary.
+
+#### 3. Common Beginner Errors
+*   **"Static member must be accessed with Class Name":** You cannot say `myObject.sharedClock`. Because it belongs to the *Class* and not the *Instance*, you must use `StaticDemo.sharedClock`.
+*   **"Object reference required for non-static field":** You accidentally tried to access a `personalDiary` variable *inside* a `static` method. Static methods have no "body" (instance), so they cannot see individual instance variables like `personalDiary`.
+
+---
 
 ### [Chapter 3 Unity Editor Environment](/Volume-0-Foundations/Chapter-3-Unity-Editor-Environment/README.md)

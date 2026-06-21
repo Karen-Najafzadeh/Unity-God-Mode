@@ -107,4 +107,48 @@ In the broader context of **Systems Engineering**, mastering Fields and Properti
 
 By mastering these "Blueprints" in Chapter 2, you stop being a "vibe coder" who just throws variables everywhere and start being an architect who designs stable, self-defending data systems.
 
+---
+
+### Syntax Workshop: Implementing the Security Guard
+This workshop helps you understand how to protect data using Properties.
+
+#### 1. The Exercise
+Create `HealthSystem.cs`. We will use a property to force health to stay within 0-100.
+
+```csharp
+using UnityEngine;
+
+public class HealthSystem : MonoBehaviour 
+{
+    private int _health = 100;
+
+    public int Health 
+    {
+        get { return _health; }
+        set 
+        {
+            _health = Mathf.Clamp(value, 0, 100);
+            Debug.Log("Health updated to: " + _health);
+        }
+    }
+
+    void Start() 
+    {
+        // Try setting health to a crazy number
+        Health = 999; 
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach the script to a GameObject.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** The Console will log `Health updated to: 100`, confirming our "Security Guard" (the `Mathf.Clamp` logic) successfully blocked the invalid value.
+
+#### 3. Common Beginner Errors
+*   **Infinite Loop in Property:** A very common mistake is to write `get { return Health; }`. Because the method calls *itself*, it causes a StackOverflow error and freezes Unity! Always return the **private field** (e.g., `_health`) in your getter.
+*   **Capitalization:** C# conventions dictate that public Properties are `PascalCase` (`Health`) and their backing private Fields are `camelCase` or `_camelCase` (`_health`). While the code works otherwise, failing to follow this makes it hard to distinguish between the two, which is the root cause of many "accidental public data" bugs.
+
+---
+
 ### [Next: Access Modifiers ,Encapsulation, Code Visibility and Scope](/Volume-0-Foundations/Chapter-2-OOP-Blueprint-and-Syntax/Access-Modifiers-Encapsulation-Code-Visibility-Scope.md)

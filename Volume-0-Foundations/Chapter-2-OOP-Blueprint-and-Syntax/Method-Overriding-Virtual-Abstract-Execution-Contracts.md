@@ -100,5 +100,50 @@ In the larger context of the **Unity God Mode** path, mastering these execution 
 
 By mastering **Virtual and Abstract Execution** in Chapter 2, you stop being a "vibe coder" who copy-pastes scripts and start being a **Systems Architect** who designs predictable, scalable, and professional-grade game engines.
 
+---
+
+### Syntax Workshop: Implementing Contracts
+This workshop shows how the compiler forces you to implement `abstract` methods and allows you to redefine `virtual` ones.
+
+#### 1. The Exercise
+Create a script `ContractDemo.cs`.
+
+```csharp
+using UnityEngine;
+
+// The Abstract Contract
+public abstract class Unit : MonoBehaviour 
+{
+    public abstract void Move(); // Mandatory: Child must implement this
+    public virtual void Taunt() { Debug.Log("Generic taunt!"); } // Optional: Child can override
+}
+
+// The Specialist implementation
+public class Robot : Unit 
+{
+    public override void Move() { Debug.Log("Robot moves via treads."); }
+    public override void Taunt() { Debug.Log("Robot beeps menacingly."); }
+}
+
+public class ContractDemo : MonoBehaviour 
+{
+    void Start() 
+    {
+        Robot myRobot = gameObject.AddComponent<Robot>();
+        myRobot.Move();
+        myRobot.Taunt();
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach to a GameObject.
+2.  **Play:** You will see the specific Robot behaviors logged in the Console.
+
+#### 3. Common Beginner Errors
+*   **"Does not implement inherited abstract member":** This is the compiler telling you that you declared your class as a type of `Unit`, but you failed to build the mandatory "Move" machine that `Unit` requires. You *must* write `public override void Move() {...}`.
+*   **Forgetting `override`:** If you try to create a method named `Move()` in the child class without the `override` keyword, the compiler will think you are just making a *new, unrelated method*. It won't actually "replace" the parent's logic. Always ensure you have the `override` keyword.
+
+---
 
 ### [Next: Static Class Members vs Instance Allocations](/Volume-0-Foundations/Chapter-2-OOP-Blueprint-and-Syntax/Static-Class-Members-vs-Instance-Allocations.md)

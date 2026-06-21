@@ -76,4 +76,52 @@ Mastering these boundaries in **Volume Zero** prepares you for the high-level en
 
 By strictly controlling the "Scope" and "Visibility" of your code in Chapter 2, you move from being a "vibe coder" who hopes everything works to a **Systems Engineer** who *guarantees* that the engine remains stable.
 
+---
+
+### Syntax Workshop: Enforcing Security
+This workshop demonstrates how Access Modifiers create "boundaries" that the compiler strictly enforces.
+
+#### 1. The Exercise
+Create two files to see encapsulation in action.
+
+`Vault.cs`:
+```csharp
+using UnityEngine;
+
+public class Vault : MonoBehaviour
+{
+    private int secretCode = 1234; // Private: Only accessible inside Vault
+    public int publicTips = 10;    // Public: Accessible by anyone
+}
+```
+
+`Intruder.cs`:
+```csharp
+using UnityEngine;
+
+public class Intruder : MonoBehaviour
+{
+    public Vault myVault; // Link this in the Inspector
+
+    void Start()
+    {
+        Debug.Log(myVault.publicTips); // Works fine!
+        
+        // Uncomment the next line to see the compiler stop you!
+        // Debug.Log(myVault.secretCode); 
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Setup:** Create two GameObjects, attach the respective scripts to each.
+2.  **Link:** Drag the GameObject with `Vault` onto the `myVault` slot of the `Intruder` script component in the Inspector.
+3.  **Compiler Error:** The moment you uncomment the `secretCode` line, the console will show an error: `'Vault.secretCode' is inaccessible due to its protection level`.
+
+#### 3. Common Beginner Errors
+*   **Over-using `public`:** It is tempting to make *everything* public so it is easy to access. This is a trap! It breaks encapsulation and makes your code "fragile." Always default to `private`. Only make things `public` if they *absolutely must* be accessible from another script.
+*   **Confusion with Inspector:** Beginners often make a field `private` and then wonder why it disappears from the Inspector. If you want a `private` field to still be visible in the Inspector for testing, use the `[SerializeField]` attribute above it instead of making it `public`.
+
+---
+
 ### [Next: Constructor Mechanics, Object Lifecycle Initialization](/Volume-0-Foundations/Chapter-2-OOP-Blueprint-and-Syntax/Constructor-Mechanics-Object-Lifecycle-Initialization.md)
