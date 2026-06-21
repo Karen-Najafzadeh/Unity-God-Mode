@@ -112,5 +112,44 @@ In the larger context of **Systems Engineering**, these three components create 
 
 Mastering this hierarchy in Chapter 1 is essential because, in **Volume II**, you will learn how the computer actually stores these Classes and Methods in physical hardware (the **Stack and Heap**). Without this structural foundation, the high-level math and memory management of later volumes would be impossible to navigate.
 
+---
+
+### Syntax Workshop: Building the Structure
+This workshop introduces you to creating your own namespace, class, and method.
+
+#### 1. The Exercise
+Create a file named `StructureDemo.cs` and paste the following, paying close attention to the curly braces `{}`.
+
+```csharp
+using UnityEngine;
+
+namespace MyDemoSpace 
+{
+    public class StructureDemo : MonoBehaviour 
+    {
+        // A simple method within our class
+        public void SayHello() 
+        {
+            Debug.Log("Hello from inside the class!");
+        }
+
+        void Start() 
+        {
+            SayHello();
+        }
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach this script to a GameObject.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** Look at the **Console**. You should see "Hello from inside the class!".
+
+#### 3. Common Beginner Errors
+*   **"Missing }":** Curly braces define the boundaries of your Cities (Namespaces), Buildings (Classes), and Machines (Methods). If you forget one closing `}`, the compiler thinks the next part of your code is still *inside* the previous one, leading to massive, confusing error chains. **Pro-tip:** Count your `{` and `}`. They must match perfectly.
+*   **"Namespace cannot directly contain members like fields":** This happens if you accidentally try to write code directly inside a `namespace` instead of putting it inside a `class`. Everything *must* live in a class.
+
+---
 
 ### [Next Topic: Variables Primitive Data Types Type Declarations](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Variables-Primitive-Data-Types-Type-Declarations.md)

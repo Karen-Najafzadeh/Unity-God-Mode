@@ -117,5 +117,41 @@ In the larger context of **Systems Engineering**, mastering signatures and param
 
 By mastering the layout of methods in Chapter 1, you move from writing "scripts" to designing **Functional APIs**—the true mark of a Unity engine architect.
 
+---
+
+### Syntax Workshop: Designing Machines
+This workshop focuses on creating methods with parameters and return values.
+
+#### 1. The Exercise
+Create `MethodDemo.cs`. We'll build a simple calculator machine to understand input/output.
+
+```csharp
+using UnityEngine;
+
+public class MethodDemo : MonoBehaviour 
+{
+    void Start() 
+    {
+        int sum = AddNumbers(5, 10);
+        Debug.Log("The result is: " + sum);
+    }
+
+    // A machine that takes two ingredients and returns a result
+    int AddNumbers(int a, int b) 
+    {
+        return a + b;
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach to a GameObject and Play.
+2.  **Inspect:** The Console should show: `The result is: 15`.
+
+#### 3. Common Beginner Errors
+*   **"Not all code paths return a value":** If you define a method to return an `int` (or any type other than `void`), you *must* have a `return` statement that runs in every possible scenario. If you have an `if` statement but no `else` for the return, the compiler will panic because it doesn't know what to return if the `if` condition is false!
+*   **Parameter Mismatch:** If your method signature is `void MyMethod(int a)`, but you call it with `MyMethod("Hello")`, the compiler will refuse to run, complaining that it can't fit your "text" ingredient into a "number" slot.
+
+---
 
 ### [Chapter 2: OOP Blueprint and Syntax](/Volume-0-Foundations/Chapter-2-OOP-Blueprint-and-Syntax/README.md)

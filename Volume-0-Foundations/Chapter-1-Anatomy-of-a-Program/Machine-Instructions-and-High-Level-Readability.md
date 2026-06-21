@@ -60,6 +60,39 @@ By understanding that every line of Chapter 1 syntax eventually becomes a hardwa
 
 This foundational understanding sets the stage for **Volume II**, where you will learn exactly how the **Stack and Heap** manage these instructions in physical RAM.
 
+---
 
+### Syntax Workshop: Seeing the Abstraction
+This workshop helps you visualize how your C# code interacts with the Unity Editor's console.
+
+#### 1. The Exercise
+Create a new script in Unity named `InstructionDemo.cs` and paste the following code:
+
+```csharp
+using UnityEngine;
+
+public class InstructionDemo : MonoBehaviour 
+{
+    void Start() 
+    {
+        // This high-level command will be translated into multiple machine instructions
+        int score = 0;
+        score = score + 10;
+        
+        Debug.Log("Current Score: " + score);
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Drag this script onto any GameObject in your Hierarchy.
+2.  **Play:** Click the **Play** button at the top of the Unity Editor.
+3.  **Inspect:** Open your **Console Panel**. You should see the message: `Current Score: 10`. 
+
+#### 3. Common Beginner Errors
+*   **"The name 'Debug' does not exist":** Ensure you have `using UnityEngine;` at the very top of your file. Without this, the compiler cannot "find" the translation tools needed to output the message to the console.
+*   **"Identifier expected":** Did you forget the semicolon `;` at the end of a line? Machine instructions are separated by these semicolons. Missing one is like skipping a beat in music—it disrupts the entire rhythm of the translation process.
+
+---
 
 ### [See the next topic: Structure of Script Namespaces Classes Methods](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Structure-of-Script-Namespaces-Classes-Methods.md)

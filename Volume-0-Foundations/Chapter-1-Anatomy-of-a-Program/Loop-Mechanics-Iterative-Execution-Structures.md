@@ -94,5 +94,46 @@ In the broader scope of **Engine Architecture and Performance Engineering**, loo
 
 By mastering **Loop Iteration Structures**, you stop thinking about "this character" or "that character" and start thinking about the **Simulation** as a whole—the hallmark of an engine architect.
 
+---
+
+### Syntax Workshop: Controlling Repetition
+This workshop explores the difference between counting (`for`), conditional repetition (`while`), and collection iteration (`foreach`).
+
+#### 1. The Exercise
+Create a file `LoopDemo.cs`. Paste this code.
+
+```csharp
+using UnityEngine;
+
+public class LoopDemo : MonoBehaviour 
+{
+    void Start() 
+    {
+        // 1. For Loop: Known repetition
+        for (int i = 0; i < 3; i++) 
+        {
+            Debug.Log("For Loop Iteration: " + i);
+        }
+
+        // 2. While Loop: Conditional repetition
+        int counter = 0;
+        while (counter < 3) 
+        {
+            Debug.Log("While Loop Iteration: " + counter);
+            counter++; // CRITICAL: If you forget this, you get an INFINITE LOOP!
+        }
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach to a GameObject and Play.
+2.  **Inspect:** The Console will show 3 logs for the `for` loop and 3 for the `while` loop.
+
+#### 3. Common Beginner Errors
+*   **The Infinite Loop:** In a `while` loop, if you forget to update your counter variable (e.g., `counter++`), the condition `counter < 3` will *always* be true. The Unity Editor will freeze, and you may have to Force Quit it. If this happens, you know exactly where to look: your `while` loop!
+*   **"Index out of range":** When using loops to access elements in a collection, remember that counting starts at `0`. If you have 5 items, the last one is at index `4`. If your loop tries to access index `5`, the game will crash.
+
+---
 
 ### [Next Topic: Method Layouts Parameter Passing Signatures Return Values](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Method-Layouts-Parameter-Passing-Signatures-Return-Values.md)

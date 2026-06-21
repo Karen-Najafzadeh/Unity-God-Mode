@@ -108,5 +108,45 @@ At the engine level (**Volume VII**), we learn that branching actually has a per
 **Summary:**
 Mastering the syntax of branching in Chapter 1 is about more than just making decisions; it is about learning to map out every possible reality your game might face. By explicitly defining these paths, you ensure that your engine is predictable, stable, and ready for the complex mathematical simulations of the volumes to come.
 
+---
+
+### Syntax Workshop: The Decision Gate
+This workshop explores how `if` statements change the execution flow based on runtime conditions.
+
+#### 1. The Exercise
+Create a script `BranchingDemo.cs`. We will toggle the `isPowerUpActive` boolean in the Inspector during Play mode to observe the branching.
+
+```csharp
+using UnityEngine;
+
+public class BranchingDemo : MonoBehaviour 
+{
+    public bool isPowerUpActive = false; // Toggle this in the Inspector!
+
+    void Update() 
+    {
+        if (isPowerUpActive) 
+        {
+            Debug.Log("Power up is ON! Movement speed doubled.");
+        }
+        else 
+        {
+            Debug.Log("Power up is OFF. Normal speed.");
+        }
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach this script to a GameObject.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** While the game is running, find the GameObject in the **Hierarchy** and look at the script component in the **Inspector**.
+4.  **Interact:** Click the checkbox next to `isPowerUpActive` to toggle it true/false. Watch the **Console** update in real-time as the logic branches!
+
+#### 3. Common Beginner Errors
+*   **"if (x = 5)":** This is a classic trap. `=` is for assignment (setting a value). `==` is for comparison (checking if they are equal). `if (x = 5)` will likely cause a compiler error or do something you didn't intend!
+*   **Missing curly braces `{ }`:** If you write `if (condition) Debug.Log("Hi");`, it works, but if you want to run *two* lines of code, you *must* use braces. Many beginners forget this and only the first line runs conditionally, while the second line runs *all the time*. Always use braces for clarity!
+
+---
 
 ### [Next Topic: Loop Mechanics Iterative Execution Structures](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Loop-Mechanics-Iterative-Execution-Structures.md)

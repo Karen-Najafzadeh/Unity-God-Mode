@@ -89,4 +89,43 @@ Mastering variables and primitive types in Chapter 1 is the first step toward **
 
 Understanding the "Size" and "Contract" of these types now ensures that when you reach the high-performance optimization volumes, you will know exactly how to minimize memory usage and keep your game running at a lightning-fast 60 frames per second.
 
+---
+
+### Syntax Workshop: Experimenting with Types
+This workshop gives you hands-on experience declaring variables and observing how the compiler enforces type contracts.
+
+#### 1. The Exercise
+Create a file named `VariableDemo.cs` and paste the following. Try adding a new line inside `Start()` to change `healthPoints` to a string (e.g., `healthPoints = "Healthy";`) and see what happens.
+
+```csharp
+using UnityEngine;
+
+public class VariableDemo : MonoBehaviour 
+{
+    int healthPoints = 100;
+    float speed = 5.5f;
+    bool isAlive = true;
+    string status = "Active";
+
+    void Start()
+    {
+        Debug.Log("Status: " + status + " | Health: " + healthPoints);
+        
+        // Try uncommenting the next line to see the compiler enforce the type contract:
+        // healthPoints = "Damaged"; // This will cause an error!
+    }
+}
+```
+
+#### 2. How to Verify
+1.  **Attach:** Attach this script to a GameObject.
+2.  **Play:** Enter Play mode.
+3.  **Inspect:** Check the **Console**. You should see the status and health logged correctly.
+
+#### 3. Common Beginner Errors
+*   **"Cannot implicitly convert type 'string' to 'int'":** This is the compiler enforcing your contract. You told the hardware `healthPoints` is a bucket for *numbers*, but you tried to put *text* in it. The compiler is saving you from a game-breaking bug.
+*   **"The name 'f' does not exist":** This usually happens if you type `float speed = 5.5;` without the `f`. Unity needs that `f` suffix to know you specifically want a `float` instead of a `double` (a higher-precision number type).
+
+---
+
 ### [Control Flow Architecture Conditional Logic Branching](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Control-Flow-Architecture-Conditional-Logic-Branching.md)
