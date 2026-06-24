@@ -14,7 +14,7 @@ A **Variable** is a "Human-Readable" label that we put on a specific set of swit
 ### Primitive Data Types: The Size of the Bucket
 In Chapter 1, we learn that not all "buckets" are created equal. In C#, we use **Primitive Data Types** to tell the hardware exactly how many switches (bits) it needs to reserve.
 
-#### 1. The `int` (Integer)
+#### [1. The `int` (see more about Integers)](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/int-syste.int32.md)
 *   **The Lore:** An `int` typically reserves 32 "switches." This allows it to hold any whole number from roughly negative 2 billion to positive 2 billion.
 *   **The Usage:** Use this for things that cannot be "halves," such as the number of gold coins, the player's level, or the count of enemies on screen.
 *   **Code Example:**
@@ -22,7 +22,7 @@ In Chapter 1, we learn that not all "buckets" are created equal. In C#, we use *
     int goldCoins = 50; 
     ```
 
-#### 2. The `float` (Floating Point)
+#### [2. The `float` (see more about Floating Point)](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Floating-point.md)
 *   **The Lore:** The name "Floating Point" comes from the fact that the decimal point can "float" anywhere in the number. These are mathematically complex because the computer has to use a special binary code to represent fractions.
 *   **The Usage:** Use this for anything involving physics or precision—movement speed, gravity, or the remaining percentage of a health bar.
 *   **Code Example:**
@@ -30,7 +30,7 @@ In Chapter 1, we learn that not all "buckets" are created equal. In C#, we use *
     float movementSpeed = 5.5f; // The 'f' tells the computer it's a float
     ```
 
-#### 3. The `bool` (Boolean)
+#### [3. The `bool` (See more about Booleans)](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Boolean.md)
 *   **The Lore:** Named after the mathematician George Boole, this is the simplest type of all. It represents a single "switch" that is either On (**True**) or Off (**False**).
 *   **The Usage:** Use this for "Yes/No" questions. Is the player jumping? Is the game paused? Is the secret door open?
 *   **Code Example:**
@@ -38,7 +38,7 @@ In Chapter 1, we learn that not all "buckets" are created equal. In C#, we use *
     bool isGameOver = false;
     ```
 
-#### 4. The `string` (Text)
+#### [4. The `string` (See more)](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/String.md)
 *   **The Lore:** A string is actually a "chain" of individual characters. The computer looks up a secret code (like ASCII or Unicode) to know that the binary pattern `01000001` represents the letter "A."
 *   **The Usage:** Use this for names, dialogue, or descriptions.
 *   **Code Example:**
@@ -128,4 +128,4 @@ public class VariableDemo : MonoBehaviour
 
 ---
 
-### [Control Flow Architecture Conditional Logic Branching](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Control-Flow-Architecture-Conditional-Logic-Branching.md)
+### [Next: Collections](./Collections.md)
