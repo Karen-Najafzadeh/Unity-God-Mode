@@ -17,6 +17,7 @@ In the larger context of **Systems Engineering**, Chapter 1 ensures your code is
 - [Machine Instructions and High Level Readability](./Machine-Instructions-and-High-Level-Readability.md)
 - [Structure of C# Script Namespaces Classes Methods](./Structure-of-Script-Namespaces-Classes-Methods.md)
 - [Variables Primitive Data Types Type Declarations](./Variables-Primitive-Data-Types-Type-Declarations.md)
+- [Data collections and Containers](./Collections.md)
 - [Control Flow Architecture Conditional Logic Branching](./Control-Flow-Architecture-Conditional-Logic-Branching.md)
 - [Loop Mechanics Iterative Execution Structures](./Loop-Mechanics-Iterative-Execution-Structures.md)
 - [Method Layouts Parameter Passing Signatures Return Values](./Method-Layouts-Parameter-Passing-Signatures-Return-Values.md)
