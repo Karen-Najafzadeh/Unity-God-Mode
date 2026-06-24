@@ -277,11 +277,64 @@ Modifiers like `ref` and `in` allow you to combine the structural benefits of st
 
 
 
-[Image mapping a 92-byte struct passed by value (cloning the entire block in memory) vs. passed via 'in' parameter modifier where a single 8-byte address pointer routes directly to the original data block]
-
 ### Real-World Blueprint: Hyper-Scale Trajectory Engine
 
 Let's see how an optimization architect builds an advanced tracking loop to process our 92-byte projectile data smoothly without melting the CPU stack.
+
+``` csharp
+
+using UnityEngine;
+
+public struct HeavyProjectileData
+{
+    public Matrix4x4 transformationMatrix; // 64 bytes (Heavy structural data)
+    public Vector3 velocityVector;         // 12 bytes
+    public float mass;                     // 4 bytes
+    public int projectileId;               // 4 bytes
+    // Total size = 84 bytes
+}
+
+public class ShockwaveSimulation : MonoBehaviour
+{
+    private HeavyProjectileData[] masterRegistry = new HeavyProjectileData[500];
+
+    void Update()
+    {
+        // Vector pointing away from an explosion source
+        Vector3 blastForce = new Vector3(0, 10f, 5f);
+
+        for (int i = 0; i < masterRegistry.Length; i++)
+        {
+            // GOD MODE PERFORMANCE: We pass the 8-byte direct pointer to the array slot.
+            // Notice we must explicitly write 'ref' both when calling AND inside the method declaration!
+            ApplyExplosionForce(ref masterRegistry[i], blastForce, Time.deltaTime);
+        }
+    }
+
+    // By utilizing the 'ref' modifier, we can DIRECTLY alter the array element fields 
+    // from inside this method, bypassing the 84-byte copy loop completely!
+    private void ApplyExplosionForce(ref HeavyProjectileData data, Vector3 force, float deltaTime)
+    {
+        // 1. We are modifying the array element directly in place!
+        // No temporary copy variable, no duplicate allocations over the stack.
+        data.velocityVector += (force / data.mass) * deltaTime;
+
+        // 2. We can simulate ablation by reducing mass directly
+        data.mass -= 0.05f * deltaTime;
+        if (data.mass < 0.1f) data.mass = 0.1f;
+
+        // 3. Update the translation elements embedded deep inside the 64-byte matrix
+        Vector3 currentPosition = data.transformationMatrix.GetColumn(3);
+        currentPosition += data.velocityVector * deltaTime;
+        data.transformationMatrix.SetColumn(3, new Vector4(currentPosition.x, currentPosition.y, currentPosition.z, 1.0f));
+
+        // ZERO data returns needed! The array elements are already modified in place.
+    }
+}
+```
+
+Here is the exact counterpart to the **ref** example, using **in** (notice the data cannot be changed in this method simmilar to readonly).
+
 
 ```csharp
 using UnityEngine;
