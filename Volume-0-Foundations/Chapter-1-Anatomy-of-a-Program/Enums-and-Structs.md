@@ -149,6 +149,6 @@ public struct RayHitData : System.IEquatable<RayHitData>
 *   **`IEquatable<T>`**: Implementing this interface allows for high-performance, type-safe equality checks that bypass the slow default "Reflection" engine.
 
 
-
+### [Next: Control Flow Architecture Conditional Logic Branching](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Control-Flow-Architecture-Conditional-Logic-Branching.md)
 
 

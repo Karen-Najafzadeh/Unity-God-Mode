@@ -1607,4 +1607,4 @@ When graduating past basic C# containers into engine-level mastery, use this men
 | **`UnsafeList<T>`** | Raw RAM Pointer | **Zero** | **None (Danger)** | Internal sub-systems or low-level custom engine calculations where absolute execution velocity overrides all else. |
 
 
-### [Next: Control Flow Architecture Conditional Logic Branching](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Control-Flow-Architecture-Conditional-Logic-Branching.md)
+### [Next: Enums and Sreucts](./Enums-and-Structs.md)

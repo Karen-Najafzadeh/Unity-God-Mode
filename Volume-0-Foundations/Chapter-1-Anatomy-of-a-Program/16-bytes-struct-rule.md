@@ -391,5 +391,8 @@ When graduating past basic C# containers into engine-level mastery, use this men
 | **Pattern A (`Explicit`)** | Strip out empty space and align fields to minimize byte footprints. | Bypasses implicit layout rules to completely eradicate padding bytes. | Compressing dense network tracking payloads, file-save structures, or math matrices down to $\le 16$ bytes. |
 | **Pattern B (`in` / `ref`)** | Transit massive structs without suffering copying delays. | Swaps pass-by-value data duplication for lightweight 8-byte reference passing. | Processing deep, data-heavy structs (like rigid-body configurations or complex inventory arrays) across high-frequency game loops.
 
+### [Next: Control Flow Architecture Conditional Logic Branching](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Control-Flow-Architecture-Conditional-Logic-Branching.md)
 
- 
+Or
+
+### [Back to the parent article](./Enums-and-Structs.md)
