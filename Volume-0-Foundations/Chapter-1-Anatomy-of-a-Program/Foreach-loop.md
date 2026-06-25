@@ -235,4 +235,10 @@ When determining your loop strategies, evaluate your choices against this archit
 | **`foreach` Loop (Custom Struct Enumerator)** | Absolute Zero Allocation | **High Speed** | Specialized spatial grids or custom custom engine systems requiring clean, self-contained domain data structures. |
 
 
-### [Next: While loop](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/While-loop.md)
+### [Next: Method Layouts, Parameter Passing, & Memory Topologies](./Method-Layouts-Parameter-Passing-Signatures-Return-Values.md)
+
+
+
+Or
+
+### [Back to parent article](./Loop-Mechanics-Iterative-Execution-Structures.md)

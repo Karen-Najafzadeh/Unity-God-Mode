@@ -15,7 +15,7 @@ Modern **Iterative Execution Structures** (Loops) were invented to "trap" repeti
 
 ---
 
-### 1. The `for` Loop: The Precision Counter
+### 1. The `for` Loop: The Precision Counter [(see more)](./for-loop.md)
 The `for` loop is the most common tool in a developer's kit. It is used when you know **exactly** how many times you want something to happen.
 
 *   **The Analogy:** Imagine you are a drill sergeant. You tell a soldier, "Do exactly 20 pushups." You have a start (pushup 0), an end (pushup 20), and a way to count (plus one each time).
@@ -41,7 +41,7 @@ for (int i = 0; i < 10; i++)
 
 ---
 
-### 2. The `while` Loop: The Persistent Sentinel
+### 2. The `while` Loop: The Persistent Sentinel [(see more)](./While-loop.md)
 The `while` loop is used when you don't know how long a task will take, but you know the **condition** that must stop it.
 
 *   **The Analogy:** You tell a worker, "Keep mopping this floor **while** it is still dirty." You don't know if it will take 5 minutes or 50, but you know when they should stop.
@@ -65,7 +65,7 @@ while (loadingProgress < 1.0f)
 
 ---
 
-### 3. The `foreach` Loop: The Collection Explorer
+### 3. The `foreach` Loop: The Collection Explorer [(see more)](./Foreach-loop.md)
 In Unity, you rarely work with just one object. You work with lists of enemies, arrays of bullets, or groups of UI buttons. The `foreach` loop is specifically designed to "walk" through a collection and perform a task on every single item inside it.
 
 *   **The Analogy:** You have a bag of 50 marbles. You reach in, take one out, look at its color, put it aside, and repeat until the bag is empty.

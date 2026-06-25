@@ -12,12 +12,19 @@ Key takeaways from the syllabus include:
 In the larger context of **Systems Engineering**, Chapter 1 ensures your code is architecturally sound from the first line. It’s the difference between a "vibe coder" and an engineer who understands the precise execution path of their logic.
 
 
-## Topics
+## Topics (study in order)
 
-- [Machine Instructions and High Level Readability](./Machine-Instructions-and-High-Level-Readability.md)
-- [Structure of C# Script Namespaces Classes Methods](./Structure-of-Script-Namespaces-Classes-Methods.md)
-- [Variables Primitive Data Types Type Declarations](./Variables-Primitive-Data-Types-Type-Declarations.md)
-- [Data collections and Containers](./Collections.md)
-- [Control Flow Architecture Conditional Logic Branching](./Control-Flow-Architecture-Conditional-Logic-Branching.md)
-- [Loop Mechanics Iterative Execution Structures](./Loop-Mechanics-Iterative-Execution-Structures.md)
+- [1. Machine Instructions and High Level Readability](./Machine-Instructions-and-High-Level-Readability.md)
+- [2. Structure of C# Script Namespaces Classes Methods](./Structure-of-Script-Namespaces-Classes-Methods.md)
+- [3. Variables Primitive Data Types Type Declarations](./Variables-Primitive-Data-Types-Type-Declarations.md)
+    - [3.1 Integers](./int-syste.int32.md)
+    - [3.2 Floating point numbers](./Floating-point.md)
+    - [3.3 Booleans](./Boolean.md)
+    - [3.4 Strings](./String.md)
+- [4. Data collections and Containers](./Collections.md)
+- [5. Control Flow Architecture Conditional Logic Branching](./Control-Flow-Architecture-Conditional-Logic-Branching.md)
+- [6. Loop Mechanics Iterative Execution Structures](./Loop-Mechanics-Iterative-Execution-Structures.md)
+    - [for loops](./for-loop.md)
+    - [while loops](./While-loop.md)
+    - [foreach loops](./Foreach-loop.md)
 - [Method Layouts Parameter Passing Signatures Return Values](./Method-Layouts-Parameter-Passing-Signatures-Return-Values.md)

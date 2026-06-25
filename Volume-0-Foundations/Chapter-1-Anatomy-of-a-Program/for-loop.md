@@ -224,4 +224,8 @@ When designing loop iterations inside performance-critical runtime environments,
 | **High-Volume Job Math Loops** | Hoist limits / use fixed-size contiguous primitives | Allows compiler engine to bypass branch tracking and apply SIMD vector optimization passes. |
 
 
-### [Next : foreach loop](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/Foreach-loop.md)
+### [Next : while loop](/Volume-0-Foundations/Chapter-1-Anatomy-of-a-Program/While-loop.md)
+
+Or
+
+### [Back to parent article](./Loop-Mechanics-Iterative-Execution-Structures.md)

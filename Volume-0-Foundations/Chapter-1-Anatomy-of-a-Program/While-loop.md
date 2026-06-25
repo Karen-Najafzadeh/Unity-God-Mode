@@ -214,3 +214,10 @@ When choosing how to guide your loop structures, use this design breakdown to se
 | **0-or-More Bounds** | `while (condition)` | Pre-test structure. Evaluates first; skips entirely if initial check is false. | Safe entry; minimal branching risk. |
 | **1-or-More Bounds** | `do { ... } while (condition)` | Post-test structure. Drops into operations immediately, optimizing raw entry speed. | Medium risk; guarantees side-effects run at least once. |
 | **Endless Background Daemon Processes** | `while (true)` with explicit thread yield handles | Infinite looping structure. Must utilize `yield return` or `await Task.Delay` structures. | **High Danger Risk**. Forgetting a yield state completely freezes the Unity Editor thread. |
+
+
+### [Next: foreach loop](./Foreach-loop.md)
+
+Or
+
+### [Back to parent article](./Loop-Mechanics-Iterative-Execution-Structures.md)
