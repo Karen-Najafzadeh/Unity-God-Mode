@@ -51,7 +51,4 @@ The final frontier. We move away from **Object-Oriented Programming** (which sca
 
 ---
 
-### The "God Mode" Oath
-By following this repository, you are committing to the "Living Unity God" path. You will not just "make games"; you will engineer simulations that are mathematically sound, memory-efficient, and architecturally bulletproof. 
-
 **Prepare for descent into the engine core.**
