@@ -18,9 +18,6 @@ Imagine there are several rival empires across the sea (representing different p
 * The Apple/Mobile Empire speaks **ARM64 Assembly**.
 * Older or specialized empires speak **PowerPC** or **MIPS**.
 
-```
-
-```
 
 In the early days of software engineering, if you wanted to distribute a game to every empire, you had to hire a separate master scribe for each region. The scribe would rewrite your entire game architecture from scratch directly into that specific empire's native tongue. If you made a tiny mistake in the ARM64 translation, the mobile blacksmith would misread the blueprint, smash his hammer into the wrong stone, and completely collapse the entire factory (**a system crash or memory corruption**). This process was slow, immensely expensive, and incredibly dangerous.
 
