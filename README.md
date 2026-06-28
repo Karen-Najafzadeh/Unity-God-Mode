@@ -1,6 +1,14 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./README_FA.md)
+
+</div>
+
 Welcome to the **Unity God Mode** repository. This is not a collection of surface-level tutorials; it is a comprehensive technical odyssey designed to transform you from a "vibe coder" into a living Unity God. an engineer capable of building complex, production-grade systems from the molecular level up.
 
 ### The Prologue: Forging the Engine-Level Mindset
+
+
 
 In the world of standard game development, most programmers are content to memorize APIs. They use `Vector3.MoveTowards` or `PlayerPrefs.SetInt` without ever questioning the mechanical "why" behind the function call. This repository exists to dismantle that black box. We do not just use the engine; we understand the silicon, the memory, and the mathematical laws that govern the virtual universe.
 
