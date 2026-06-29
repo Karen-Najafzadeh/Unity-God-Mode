@@ -261,4 +261,4 @@ Understanding where your performance budget goes is essential for maintaining sm
 By using strongly-typed data structures, generic contracts, and avoiding unnecessary casting within your execution routines, you minimize CPU overhead. This leaves your processor fully available to handle core gameplay code, complex AI behaviors, and physics simulations smoothly frame after frame.
 
 
-### [Next: Zero Allocation Data Optimization Formats](./Zero-Allocation-Data-Optimization-Formats.md)
+### [Next: Zero Allocation Data Optimization Formats](./11-4-Zero-Allocation-Data-Optimization-Formats.md)

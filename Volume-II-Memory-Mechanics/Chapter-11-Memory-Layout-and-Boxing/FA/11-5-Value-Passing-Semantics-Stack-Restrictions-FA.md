@@ -221,4 +221,4 @@ public class NetworkTelemetryHub : MonoBehaviour
 
 ---
 
-### [بخش بعدی: فصل دوازدهم - مدیریت خودکار حافظه (Chapter 12 Automated Memory Management)](https://www.google.com/search?q=/Volume-II-Memory-Mechanics/Chapter-12-Automated-Memory-Management/README.md)
+### [بخش بعدی: فصل دوازدهم - مدیریت خودکار حافظه (Chapter 12 Automated Memory Management)](./../../Chapter-12-Automated-Memory-Management/FA/)
