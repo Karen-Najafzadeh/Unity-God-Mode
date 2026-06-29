@@ -1,3 +1,10 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/11-2-Allocation-Cost-of-Boxing-Operations-FA.md)
+
+</div>
+
+
 # The Allocation Cost of Boxing Operations
 
 Now that you have a firm grasp of the Stack (your immediate, hyper-fast local workbench) and the Heap (the distant, complex warehouse) from our earlier journeys , we can pull back the curtain on one of the most deceptive performance killers in Unity game engineering: **Boxing Allocations**.

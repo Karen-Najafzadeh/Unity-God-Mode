@@ -1,3 +1,9 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/11-3-CPU-Penalty-of-Unboxing-Operations-FA.md)
+
+</div>
+
 # The CPU Penalty of Unboxing Operations
 
 We have previously witnessed how a sleek, stack-allocated value type gets forced into a bulky cardboard container on the managed heap—a process that clutters your memory warehouse with unwanted trash. But what happens when your game actually needs to open that cardboard container and pull the data back out?

@@ -1,4 +1,4 @@
-[ به فارسی بخوانید](https://www.google.com/search?q=./README_FA.md)
+
 
 ### فصل ۱۱: چیدمان حافظه و بوکسینگ (Boxing)
 
@@ -176,3 +176,5 @@ public class TypeUnificationTester : MonoBehaviour
 | **قابلیت چندریختی (Polymorphic)** | فقط اینترفیس‌های استاتیک. بدون ارث‌بری در پیاده‌سازی. | فقط اینترفیس‌های استاتیک. بدون ارث‌بری در پیاده‌سازی. | ارث‌بری پویا، اوررایدها (Overrides) و چندریختی کامل. |
 
 ---
+
+### [بعدی :  هزینه تخصیص حافظه در عملیات Boxing (تخصیص جعبه‌ای)](./11-2-Allocation-Cost-of-Boxing-Operations-FA.md)

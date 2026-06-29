@@ -1,3 +1,10 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/11-5-Value-Passing-Semantics-Stack-Restrictions-FA.md)
+
+</div>
+
+
 # Value Passing Semantics and Stack Restrictions
 
 We have witnessed the financial disaster of forcing raw bytes into managed heap containers (Boxing), felt the grueling processing tax of extracting them via runtime customs checks (Unboxing), and masterfully engineered monomorphized generic structures to bypass these traps entirely. However, our quest to dominate the bare metal introduces a fundamental paradox: If our variables live purely on the ultra-fast, local Stack workbench, how do we share large amounts of data across different parts of our game engine without causing a massive structural data-copying bottleneck?

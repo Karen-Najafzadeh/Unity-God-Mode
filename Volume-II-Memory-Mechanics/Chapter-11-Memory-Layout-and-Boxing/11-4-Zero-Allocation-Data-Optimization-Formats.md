@@ -1,3 +1,10 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/11-4-Zero-Allocation-Data-Optimization-Formats-FA.md)
+
+</div>
+
+
 # Zero-Allocation Data Optimization Formats
 
 We have thoroughly explored the anatomy of the trap: how boxing forces innocent data into expensive cardboard heap containers, and how unboxing forces the CPU to pull over at a customs verification checkpoint to double-check structural manifests. Now, we move into active remediation.

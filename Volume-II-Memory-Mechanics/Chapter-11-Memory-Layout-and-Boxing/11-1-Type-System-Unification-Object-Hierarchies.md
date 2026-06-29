@@ -1,3 +1,9 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/11-1-Type-System-Unification-Object-Hierarchies-FA.md)
+
+</div>
+
 # Type System Unification and Object Hierarchies
 
 Welcome to Chapter 11. In our previous journey, we drew a hard architectural line across the universe, splitting your data into two distinct realms: **Value Types** (the fast, self-cleaning tokens of the Stack) and **Reference Types** (the heavy, flexible shipping containers of the Heap).
