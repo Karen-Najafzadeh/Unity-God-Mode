@@ -46,7 +46,7 @@
 
 #### ۵. نحوه کارکرد فشرده‌سازی چگونه است؟
 
-پیش از این، ما «اثر پنیر سوئیسی» (پراکندگی حافظه یا Memory Fragmentation) را در فصل ۱۰ هنگام صحبت درباره [مخاطرات پراکندگی در معماری حافظه هیپ](https://www.google.com/search?q=/Volume-II-Memory-Mechanics/Chapter-10-Virtual-Machine-and-Type/Heap-Memory-Architecture-Fragmentation-Hazards.md) معرفی کرده‌ایم.
+پیش از این، ما «اثر پنیر سوئیسی» (پراکندگی حافظه یا Memory Fragmentation) را در فصل ۱۰ هنگام صحبت درباره [مخاطرات پراکندگی در معماری حافظه هیپ](/Volume-II-Memory-Mechanics/Chapter-10-Virtual-Machine-and-Type/Heap-Memory-Architecture-Fragmentation-Hazards.md) معرفی کرده‌ایم.
 
 ##### تاریخچه علوم کامپیوتر: سرایدار تتریس‌باز (Compaction)
 
