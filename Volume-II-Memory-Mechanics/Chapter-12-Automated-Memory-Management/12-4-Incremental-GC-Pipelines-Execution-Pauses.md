@@ -1,3 +1,11 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/12-4-Incremental-GC-Pipelines-Execution-Pauses-FA.md)
+
+</div>
+
+
+
 # Incremental GC Pipelines & Execution Pauses
 
 #### 1. Introduction and Structural Context
