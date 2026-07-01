@@ -1,3 +1,11 @@
+<div align="center">
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/12-5-Object-Pooling-Structural-Pattern-FA.md)
+
+</div>
+
+
+
 # The Object Pooling Structural Pattern (Low-Level Hardware Mechanics)
 
 #### 1. Introduction and Architectural Context
@@ -54,11 +62,18 @@ Modern computer processors don’t read data from your computer's main RAM one b
 
 ---
 
-#### 5. Comprehensive Code Examples
+#### 5. Code Examples
 
 Let’s examine the architectural difference between an allocation-heavy design and an advanced, zero-allocation, cache-optimized Object Pooling system.
 
-##### ❌ The Naive Allocation Architecture (The Performance Killer)
+
+
+
+
+
+
+
+##### 1. ❌ The Naive Allocation Architecture (The Performance Killer)
 
 This script represents a common pattern found in many games: it spawns a muzzle flash effect and a projectile on a repeated timer, then relies on standard destruction timers to clean them up.
 
@@ -92,15 +107,183 @@ public class NaiveWeaponSystem : MonoBehaviour
 
 ```
 
-##### 👑 The Advanced sovereign Object Pool Architecture (Zero Allocation & Performance Optimized)
 
-To completely bypass these engine bottlenecks, we will build a production-grade, highly optimized Object Pool using Unity's modern `UnityEngine.Pool` architecture.
 
-This design completely eliminates runtime heap allocations, bypasses interop bridge creation costs during gameplay, cleans up spatial locality via array-backed references, and incorporates an automated safety valve to handle unexpected overruns.
+
+---
+
+
+##### 2. The Simple Custom Object Pool Architecture (The Basic Blueprint)
+
+To understand how an advanced system works under the hood, we must first look at a simple, custom-written Object Pool. We will build this using a standard C# `Queue` data structure. Think of a `Queue` as a literal line of objects at a supermarket checkout window: the first object placed into the line is the first one taken out (**FIFO: First-In, First-Out**).
+
+##### 🛠️ The Simple Custom Pool Code Implementation
+
+```csharp
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SimpleCustomObjectPool : MonoBehaviour
+{
+    [Header("Pool Setup")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private int initialPoolSize = 20;
+
+    // 📦 THE CABINET: A simple queue to store our dormant objects in memory
+    private Queue<GameObject> poolStorage = new Queue<GameObject>();
+
+    void Start()
+    {
+        // Pre-allocate the objects right at boot time, before the player can even press fire
+        for (int i = 0; i < initialPoolSize; i++)
+        {
+            GameObject obj = Instantiate(bulletPrefab);
+            
+            // Put the object to sleep immediately so it doesn't float in space or process logic
+            obj.SetActive(false);
+            
+            // Slide it into our storage cabinet queue
+            poolStorage.Enqueue(obj);
+        }
+    }
+
+    /// <summary>
+    /// The extraction office: retrieves a bullet from our storage line.
+    /// </summary>
+    public GameObject GetBullet()
+    {
+        // Safety check: What if the player fires faster than our initial pool can handle?
+        // If the cabinet is empty, we are forced to dynamically construct an emergency backup.
+        if (poolStorage.Count == 0)
+        {
+            Debug.LogWarning("Pool ran completely dry! Dynamically allocating an emergency backup object.");
+            GameObject emergencyObj = Instantiate(bulletPrefab);
+            return emergencyObj;
+        }
+
+        // Pull the oldest resting object out of the queue line
+        GameObject activeObj = poolStorage.Dequeue();
+        
+        // Wake it up! Bring it back into the visual game world
+        activeObj.SetActive(true);
+        
+        return activeObj;
+    }
+
+    /// <summary>
+    /// The return desk: slides an old bullet back into the cabinet instead of destroying it.
+    /// </summary>
+    public void ReturnBullet(GameObject obj)
+    {
+        // Blindfold the object and put it to sleep to stop rendering and physics calculations
+        obj.SetActive(false);
+
+        // Safely push it back into our storage line for future reuse
+        poolStorage.Enqueue(obj);
+    }
+}
+
+```
+---
+
+This is a demonstration of how we actually use the pool after we create it.
+
+```csharp
+
+using UnityEngine;
+
+public class Gun : MonoBehaviour
+{
+    // Reference to our custom object pool.
+    // Assign this in the Inspector. (We are not using Singleton pattern yet)
+    [SerializeField] private SimpleCustomObjectPool bulletPool;
+
+    // The point where bullets should appear.
+    [SerializeField] private Transform firePoint;
+
+    void Update()
+    {
+        // Fire a bullet whenever the left mouse button is pressed.
+        if (Input.GetMouseButtonDown(0))
+        {
+            Fire();
+        }
+    }
+
+    private void Fire()
+    {
+        // Ask the pool for an available bullet.
+        // No Instantiate() happens here unless the pool is empty.
+        GameObject bullet = bulletPool.GetBullet();
+
+        // Move the recycled bullet to the gun's muzzle.
+        bullet.transform.position = firePoint.position;
+
+        // Make the bullet face the same direction as the gun.
+        bullet.transform.rotation = firePoint.rotation;
+
+        // Give the bullet some forward velocity.
+        // (Assumes the bullet has a Rigidbody component.)
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            // Reset any leftover movement from its previous life.
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            // Launch the bullet forward.
+            rb.linearVelocity = firePoint.forward * 20f;
+        }
+
+        // Since this simple pool doesn't automatically reclaim bullets,
+        // we'll return this one after 3 seconds.
+        Invoke(nameof(ReturnBullet), 3f);
+
+        // Store the bullet reference so Invoke() knows which one to return.
+        bulletToReturn = bullet;
+    }
+
+    // Holds the most recently fired bullet.
+    // (This is only for keeping the example simple.)
+    private GameObject bulletToReturn;
+
+    private void ReturnBullet()
+    {
+        // Give the bullet back to the pool instead of destroying it.
+        bulletPool.ReturnBullet(bulletToReturn);
+    }
+}
+```
+
+
+##### ⚠️ Limitations of the Simple Architecture
+
+While this custom pool demonstrates the core concept beautifully, it has major architectural flaws that make it unsuitable for large-scale, enterprise-grade game development:
+
+* **The Empty Cabinet Collapse:** If the pool runs dry, it scales infinitely via dynamic allocations without a safety ceiling, risking an out-of-memory crash.
+* **No Built-in Safety Checks:** If a developer accidentally returns the exact same bullet to the pool twice, the object will exist in the queue twice. This breaks the checkout logic entirely, causing bizarre bugs where one firing bullet suddenly teleports or controls another.
+* **Lack of Cache Alignment:** A raw C# Queue doesn't guarantee optimal spatial layout inside your computer's CPU cache line, which leaves room for minor performance improvements.
+
+> Note: This is intentionally a minimal educational example. the cosumer script (Gun) It has limitations such as: if you fire multiple bullets within 3 seconds, bulletToReturn gets overwritten, so only the last bullet will be returned correctly. 
+
+> For a real game, each bullet would usually return itself (or a coroutine would handle each bullet independently), but for demonstrating "this is how you use the pool", this keeps the code as simple as possible.
+
+---
+
+##### 3. The Advanced Sovereign Object Pool Architecture (Unity's Modern System)
+
+To bypass these limitations completely, modern versions of Unity provide a highly optimized native pooling architecture under the `UnityEngine.Pool` namespace.
+
+This enterprise framework replaces manual arrays or lists with a highly robust infrastructure that includes built-in duplicate tracking, automated capacity scaling boundaries, pre-allocated memory optimization, and safety incinerators to destroy runaway objects if the pool overflows.
+
+##### 👑 The Advanced Sovereign Production Code Implementation
+
+Below is the complete, production-grade architectural framework. It is divided into two distinct scripts: the master weapon controller that commands the memory warehouse, and a companion script attached to the projectile to automate its lifecycle.
 
 ```csharp
 using UnityEngine;
-using UnityEngine.Pool; // Utilizes Unity's highly optimized native pooling framework
+using UnityEngine.Pool; // 👑 Utilizes Unity's native, highly optimized pooling framework
 
 public class SovereignWeaponSystem : MonoBehaviour
 {
@@ -112,30 +295,32 @@ public class SovereignWeaponSystem : MonoBehaviour
     [Header("Weapon Anchors")]
     [SerializeField] private Transform firePoint;
 
-    // 👑 ARCHITECTURAL HEART: The strongly-typed structural pool container.
-    // This replaces manual lists/stacks with an optimized internal collection framework.
+    // 👑 THE ARCHITECTURAL HEART: A strongly-typed structural pool interface.
+    // This replaces basic queues with an internal framework featuring deep hardware tracking.
     private IObjectPool<GameObject> projectilePool;
 
     void Awake()
     {
-        // Configure the explicit operational rules of our workforce cabinet at startup
+        // Configure the explicit operational blueprint of our workforce cabinet at startup.
+        // We supply 4 critical callback functions that dictate how memory is handled.
         projectilePool = new ObjectPool<GameObject>(
-            createFunc: OnCreatePooledItem,          // Rules for fabricating a new entity if the pool runs entirely dry
-            actionOnGet: OnTakeItemFromPool,        // Rules for waking up and configuring an entity for world injection
-            actionOnRelease: OnReturnItemToPool,    // Rules for blinding, deafening, and putting an entity to sleep
-            actionOnDestroy: OnDestroyPooledItem,    // Safety valve: rules for permanently incinerating an object if the pool overflows its ceiling
-            collectionCheck: true,                  // Validation check to prevent a critical error: releasing the same object twice
-            defaultCapacity: defaultPoolCapacity,   // Preallocates physical continuous slots in memory right at boot time
+            createFunc: OnCreatePooledItem,          // Rule 1: How to fabricate a new object if the pool runs dry
+            actionOnGet: OnTakeItemFromPool,        // Rule 2: How to wake up and configure an object for world injection
+            actionOnRelease: OnReturnItemToPool,    // Rule 3: How to blindfold and put an object to sleep in the cabinet
+            actionOnDestroy: OnDestroyPooledItem,    // Rule 4: The Safety Valve—how to incinerate an object if the pool overflows its ceiling
+            collectionCheck: true,                  // Validation check: throws a hard error if a developer tries to return an object already inside the pool
+            defaultCapacity: defaultPoolCapacity,   // Reserves a continuous block of slots in the RAM warehouse floor right at boot time
             maxSize: maxPoolSafetyCeiling           // Strict boundary to prevent runaway memory leaks from consuming all RAM
         );
 
-        // Warm up the pool cache: force the engine to pre-bake our workspace line up front
+        // 👑 WARM-UP PARADIGM: Force the engine to pre-bake our workspace line up front.
         // This ensures the hardware caches are pre-loaded with aligned reference links.
         GameObject[] warmUpBuffer = new GameObject[defaultPoolCapacity];
         for (int i = 0; i < defaultPoolCapacity; i++)
         {
             warmUpBuffer[i] = projectilePool.Get();
         }
+        // Immediately return them all to the cabinet so they are waiting for gameplay action
         for (int i = 0; i < defaultPoolCapacity; i++)
         {
             projectilePool.Release(warmUpBuffer[i]);
@@ -144,32 +329,33 @@ public class SovereignWeaponSystem : MonoBehaviour
 
     void Update()
     {
-        // Non-allocating frame loop evaluation
+        // Non-allocating frame loop evaluation: Executes with absolute zero heap allocation
         if (Input.GetKey(KeyCode.Space))
         {
-            // 👑 ACTION: Extract a perfectly warm, pre-loaded bullet from memory cache.
-            // Zero heap allocation occurs here. Interop registration is bypassed.
+            // Extract a perfectly warm, pre-loaded bullet directly from memory cache.
             GameObject bullet = projectilePool.Get();
             
-            // Re-initialize location parameters swiftly via direct memory assignment
+            // Re-initialize its physical location swiftly via direct memory allocation
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = firePoint.rotation;
         }
     }
 
-    // --- POOL LIFECYCLE MANAGEMENT CALLBACKS ---
+    // --- EXPERT POOL LIFECYCLE MANAGEMENT CALLBACKS ---
 
     private GameObject OnCreatePooledItem()
     {
-        // This execution track runs ONLY during startup warmup or extreme stress overruns.
+        // This execution track runs ONLY during startup warmup or extreme gameplay stress overruns.
         GameObject instance = Instantiate(projectilePrefab);
         
-        // Inject a dedicated tracking token so the bullet knows exactly which pool cabinet it belongs to
-        PooledProjectile token = instance.GetComponent<PooledProjectile>();
+        // Inject a tracking token so the bullet knows exactly which pool cabinet it belongs to
+        SovereignPooledProjectile token = instance.GetComponent<SovereignPooledProjectile>();
         if (token == null)
         {
-            token = instance.AddComponent<PooledProjectile>();
+            token = instance.AddComponent<SovereignPooledProjectile>();
         }
+        
+        // Pass the handle of our pool interface directly into the projectile's local registers
         token.AssignOriginPool(projectilePool);
 
         instance.SetActive(false);
@@ -178,10 +364,10 @@ public class SovereignWeaponSystem : MonoBehaviour
 
     private void OnTakeItemFromPool(GameObject pooledInstance)
     {
-        // Bring the object back into the game world without re-running initialization paperwork
+        // Bring the object back into the game world without re-running heavy initialization paperwork
         pooledInstance.SetActive(true);
         
-        // Reset movement telemetry systems
+        // Instantly reset movement telemetry systems to wipe clear any old velocity values
         if (pooledInstance.TryGetComponent<Rigidbody>(out var rb))
         {
             rb.linearVelocity = Vector3.zero;
@@ -191,24 +377,37 @@ public class SovereignWeaponSystem : MonoBehaviour
 
     private void OnReturnItemToPool(GameObject pooledInstance)
     {
-        // Deactivate visuals, physics, and processing components instantaneously
+        // Deactivate visuals, physics, and processing components instantaneously.
+        // The object remains alive in RAM, but goes completely dormant.
         pooledInstance.SetActive(false);
     }
 
     private void OnDestroyPooledItem(GameObject pooledInstance)
     {
-        // Safety Valve: Clean up excess instances if the pool scales past its maximum limit
+        // Safety Valve Activated: If the game spawned 120 bullets during an explosion,
+        // but our ceiling rule is 100, the excess 20 objects will be cleanly permanently destroyed
+        // to defend the physical RAM boundaries of the hardware.
         Destroy(pooledInstance);
     }
 }
 
-// 👑 COMPANION VISUAL TOKENS: Placed on the prefab asset to automate life-cycling
-public class PooledProjectile : MonoBehaviour
+```
+
+##### 👑 The Sovereign Pooled Projectile Component
+
+```csharp
+using UnityEngine;
+using UnityEngine.Pool;
+
+public class SovereignPooledProjectile : MonoBehaviour
 {
     private IObjectPool<GameObject> originPool;
     private float lifeDurationTracker;
     [SerializeField] private float maxLifeTimeSeconds = 2.0f;
 
+    /// <summary>
+    /// Connects this individual item back to its master organizational pool.
+    /// </summary>
     public void AssignOriginPool(IObjectPool<GameObject> poolHandle)
     {
         originPool = poolHandle;
@@ -216,12 +415,13 @@ public class PooledProjectile : MonoBehaviour
 
     void OnEnable()
     {
-        // Reset life clocks upon extraction
+        // Reset life clocks upon extraction from the cabinet drawer
         lifeDurationTracker = 0.0f;
     }
 
     void Update()
     {
+        // Track how long the bullet has lived in the active world
         lifeDurationTracker += Time.deltaTime;
         if (lifeDurationTracker >= maxLifeTimeSeconds)
         {
@@ -231,23 +431,37 @@ public class PooledProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Immediate interception of physical impact events
+        // Immediate interception of physical impact events (e.g., hitting a wall or an enemy)
         ReturnToCabinet();
     }
 
     private void ReturnToCabinet()
     {
+        // Verify that we have a valid pool connection and that we aren't already put to sleep
         if (originPool != null && gameObject.activeSelf)
         {
-            // 👑 ARCHITECTURAL MASTERSTROKE: Release back into the system drawer.
+            // 👑 THE MASTERSTROKE: Release back into the system drawer instead of calling Destroy().
             // The memory space stays permanently hot, references stay clean, 
-            // and the Incremental GC pipeline remains completely unbothered.
+            // and the Garbage Collector pipeline remains completely unbothered.
             originPool.Release(gameObject);
         }
     }
 }
 
 ```
+
+---
+
+#### 5. Architectural Breakdown Comparison
+
+| Operational Metric | Naive Allocation Architecture | Custom Queue Pool Architecture | Sovereign Native Pool Architecture |
+| --- | --- | --- | --- |
+| **Runtime Heap Allocation** | **Extremely High** (Every single frame) | **Zero** (Except when pool dries up) | **Zero** (Except when pool dries up) |
+| **Garbage Collector Impact** | Severe micro-stutters and sudden frame rate dips | Infrequent impact (Only on unexpected overruns) | **Absolute Zero** (Protected by warm-up pre-allocation) |
+| **Duplicate Return Protection** | N/A (Objects are abandoned) | None (Leads to catastrophic object corruption) | **Excellent** (Built-in runtime collection checking) |
+| **Memory Boundaries** | None (Will allocate until RAM crashes) | Infinite scaling capability without a ceiling | **Strict Safety Ceiling** (Incinerates overruns permanently) |
+| **Startup Cost** | Zero (All costs paid during gameplay) | Minimal initialization overhead | High startup warmup (Guarantees smooth gameplay later) |
+
 
 
 ### [Next: Chapter 13 Advanced Custom Types](./../Chapter-13-Advanced-Custom-Types/README.md)
