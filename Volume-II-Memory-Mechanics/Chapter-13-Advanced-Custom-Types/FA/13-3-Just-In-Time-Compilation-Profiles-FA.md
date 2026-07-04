@@ -106,6 +106,7 @@ public class JITPreWarmingManager : MonoBehaviour
     {
         // ۱. کامپایلر JIT را مجبور می‌کنیم متد را همین الان کامپایل کند.
         // نتایج دور ریخته می‌شوند، اما کد ماشین تولیدشده در کش کد باقی می‌ماند.
+
         Debug.Log("Pre-warming JIT compilation...");
         stressTest.MassiveCalculation(0); 
         Debug.Log("JIT pre-warming complete.");
@@ -117,22 +118,30 @@ public class JITPreWarmingManager : MonoBehaviour
 Reflection اغلب در محیط‌های JIT مورد سوءاستفاده قرار می‌گیرد. در AOT (IL2CPP)، ریفلکشن جنریک به طور قابل توجهی گران‌تر است، زیرا کامپایلر باید برای هر نمونه‌سازی تایپ (Type Instantiation) کد تولید کند.
 
 ```csharp
-// بد: انجام این کار داخل حلقه Update در AOT
-var field = typeof(MyClass).GetField("myValue"); 
+
+var field = typeof(MyClass).GetField("myValue");
 field.SetValue(instance, 10);
 
-// بهتر: کش کردن فیلد یا استفاده از Action/Func delegates برای دور زدن سربار ریفلکشن.
+// بد: انجام این کار داخل حلقه Update در AOT
+
+
+
 private FieldInfo _cachedField;
 void Awake() => _cachedField = typeof(MyClass).GetField("myValue");
 void Update() => _cachedField.SetValue(instance, 10);
+
+
+// بهتر: کش کردن فیلد یا استفاده از Action/Func delegates برای دور زدن سربار ریفلکشن.
+
 ```
 
 #### ⚖️ مثال ۲: تولید کد پویا (انحصاری JIT)
 اگر از `System.Reflection.Emit` برای تولید IL در زمان اجرا استفاده می‌کنید، پروژه شما **در IL2CPP کار نخواهد کرد**.
 
 ```csharp
-// فقط JIT: این کد IL را به صورت پویا کامپایل می‌کند.
 // IL2CPP (AOT) نمی‌تواند این را مدیریت کند زیرا کد ماشین را در زمان بیلد تولید می‌کند.
+// فقط JIT: این کد IL را به صورت پویا کامپایل می‌کند.
+
 DynamicMethod method = new DynamicMethod("FastAdd", typeof(int), new[] { typeof(int), typeof(int) });
 ILGenerator il = method.GetILGenerator();
 il.Emit(OpCodes.Ldarg_0);
