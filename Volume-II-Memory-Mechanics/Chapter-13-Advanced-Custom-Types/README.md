@@ -12,7 +12,7 @@ Welcome to Chapter 13. This chapter bridges the gap between managed C# paradigms
 ### 2. [Generic Metaprogramming & Parametric Generalization](./13-2-Generic-Metaprogramming-Parametric-Generalization.md)
 * **Summary:** Master compile-time metaprogramming with Generics. Understand how C#'s runtime avoids the performance pitfalls of monomorphization (C++) and type erasure (Java) by precisely slicing native machine assembly for value types and pointer-optimized paths for reference types, ensuring 100% type safety with absolute zero boxing.
 
-### 3. [Just-In-Time Compilation Profiles](./Just-In-Time-Compilation-Profiles.md)
+### 3. [Just-In-Time Compilation Profiles](./13-3-Just-In-Time-Compilation-Profiles.md)
 * **Summary:** Understand the inner workings of JIT compilation. This topic details how the virtual machine translates intermediate language (IL) into native assembly at runtime, the performance impact of JIT compilation tiers, and how code patterns affect compilation performance in real-time.
 
 ### 4. [Covariance & Contravariance Variations](./Covariance-Contravariance-Variations.md)
