@@ -221,4 +221,4 @@ public class OptimizedGameSystems : MonoBehaviour
 | **Hardware Performance** | High CPU overhead from object pointer-chasing and frequent garbage sweeps. | Ultra-optimized. Slices cleanly into direct native assembly, preserving CPU cache lines. |
 
 
-### [Just In Time Compilation Profiles](./Just-In-Time-Compilation-Profiles.md)
+### [Just In Time Compilation Profiles](./13-3-Just-In-Time-Compilation-Profiles.md)

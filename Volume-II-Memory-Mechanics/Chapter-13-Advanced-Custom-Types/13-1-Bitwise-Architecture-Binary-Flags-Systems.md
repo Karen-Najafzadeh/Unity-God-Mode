@@ -256,4 +256,4 @@ public class BitwiseStatusManager : MonoBehaviour
 
 
 
-### [Next: Generic Metaprogramming Parametric Generalization](./Generic-Metaprogramming-Parametric-Generalization.md)
+### [Next: Generic Metaprogramming Parametric Generalization](./13-2-Generic-Metaprogramming-Parametric-Generalization.md)
