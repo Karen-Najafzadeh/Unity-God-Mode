@@ -1,6 +1,6 @@
 <div align="center">
 
-[> Read in English](../13-5-Hash-Code-Computations-Index-Bucketing.md)
+[ Read in English](../13-5-Hash-Code-Computations-Index-Bucketing.md)
 
 </div>
 
