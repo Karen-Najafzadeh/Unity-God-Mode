@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_the_United_Kingdom.svg" width="100" valign="middle"> مطالعه به زبان انگلیسی](../13-2-Generic-Metaprogramming-Parametric-Generalization.md)
+[ مطالعه به زبان انگلیسی](../13-2-Generic-Metaprogramming-Parametric-Generalization.md)
 
 </div>
 
