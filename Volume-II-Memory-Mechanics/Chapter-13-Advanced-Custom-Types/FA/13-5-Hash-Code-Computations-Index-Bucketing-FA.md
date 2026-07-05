@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" width="100" valign="middle"> Read in English](../13-5-Hash-Code-Computations-Index-Bucketing.md)
+[> Read in English](../13-5-Hash-Code-Computations-Index-Bucketing.md)
 
 </div>
 

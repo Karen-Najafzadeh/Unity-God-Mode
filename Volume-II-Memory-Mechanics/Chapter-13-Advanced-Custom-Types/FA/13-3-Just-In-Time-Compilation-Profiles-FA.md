@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg" width="100" valign="middle"> مطالعه به زبان انگلیسی](../13-3-Just-In-Time-Compilation-Profiles.md)
+[> مطالعه به زبان انگلیسی](../13-3-Just-In-Time-Compilation-Profiles.md)
 
 </div>
 

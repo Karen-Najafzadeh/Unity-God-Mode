@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Lion_and_Sun_flag_%28emoji%29.svg" width="100" valign="middle"> به فارسی بخوانید](./FA/13-4-Covariance-Contravariance-Variations-FA.md)
+[ به فارسی بخوانید](./FA/13-4-Covariance-Contravariance-Variations-FA.md)
 
 </div>
 
