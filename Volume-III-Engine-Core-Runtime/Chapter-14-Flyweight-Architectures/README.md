@@ -5,8 +5,7 @@ Welcome to the command deck of execution efficiency! In our previous architectur
 This chapter is your passport behind the scenes of how modern triple-A engines render millions of complex entities smoothly without melting your target hardware. Here is the architectural layout of what we will uncover and conquer:
 
 * **[The Flyweight Design Pattern:](./14-1-Flyweight-Design-Pattern.md)** Discover the historical computer science lore of the "Flyweight"—a brilliant design mechanism engineered to eliminate redundancy by sharing heavy, identical property sets across thousands of separate game objects.
-* **[Native C++ Allocations vs. Managed Objects:](./14-2-Native-C++-Allocations-vs-Managed-Objects.md)** Break down the border control operating between Unity’s friendly, safe C# managed script environment and its high-velocity, raw C++ native core. You will learn how the engine splits responsibility to maximize computing power.
-* **[Memory Optimization via Shared Immutable State:](./14-3-Memory-Optimization-via-Shared-Immutable-State.md)** Learn how to isolate data that never changes and reuse it infinitely, turning massive data footprints into feather-light configurations that slide cleanly into the CPU cache lanes.
+* **[The Architecture of Data Layouts:](./14-2-Architecture-of-Data-Layouts.md)** Explore the foundational differences between Array of Structures (AoS) and Structure of Arrays (SoA) layouts, and understand how they impact cache locality and CPU execution efficiency.
 * **[Lifecycle Event Subscriptions across Runtime Boundaries:](./14-4-Lifecycle-Event-Subscriptions-Runtime-Boundaries.md)** Master the interop mechanics that allow actions occurring in the deep C++ core to instantly and safely notify your high-level C# scripts without stalling your game's frame loop.
 
 Prepare your toolkit. We are moving beyond simple data tracking to achieve absolute sovereignty over memory footprints, runtime boundaries, and native execution speeds!

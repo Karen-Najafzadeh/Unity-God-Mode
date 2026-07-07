@@ -132,8 +132,7 @@
 ### Chapter 14: Flyweight Architectures and Native Memory Models
 
 * **The Flyweight Design Pattern**
-* **Native C++ Allocations vs. Managed Objects**
-* **Memory Optimization via Shared Immutable State**
+* **The Architecture of Data Layouts**
 * **Lifecycle Event Subscriptions across Runtime Boundaries**
 
 ### Chapter 15: Native Serialization and High-Frequency Lifecycles

@@ -414,4 +414,4 @@ public class SharedFloatVariable : ScriptableObject
 و هنگامی که این را درک کنید، بازی شما از توده‌ای از اشیاء تکراری به سیستمی از هوش ظریف، اشتراکی و مقیاس‌پذیر تبدیل می‌شود.
 
 
-### [بعدی: تخصیص‌های بومی C++ در برابر اشیاء مدیریت‌شده (Native C++ Allocations vs Managed Objects)](./14-2-Native-C++-Allocations-vs-Managed-Objects-FA.md)
+### [بعدی: معماری طراحی‌های داده (Architecture of Data Layouts)](./14-2-Architecture-of-Data-Layouts-FA.md)
