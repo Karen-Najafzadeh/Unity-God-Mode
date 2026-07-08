@@ -1,4 +1,9 @@
-In **Volume I, Chapter 5: Vector Spaces and Linear Kinematics**, we transition from the grammar of code to the fundamental laws of digital reality. At the heart of this chapter is the study of **Euclidean Distance Metrics**—the mathematical "measuring tape" used to determine the exact gap between two points in 3D space. 
+# Euclidean Distance Metrics
+
+---
+
+
+In **Volume I, Chapter 5: Vector Spaces and Linear Kinematics**, we transition from the grammar of code to the fundamental laws of digital reality. At the heart of this chapter is the study of **Euclidean Distance Metrics**, the mathematical "measuring tape" used to determine the exact gap between two points in 3D space. 
 
 For a developer aspiring to "God Mode," understanding this isn't just about knowing how to measure a line; it’s about understanding the hidden "Math Tax" that the computer pays every time you ask it a question about distance.
 
@@ -94,6 +99,34 @@ public class GodModeMine : MonoBehaviour
     void Explode() { /* BOOM */ }
 }
 ```
+
+
++ ### Proof of Concept: Why SqrMagnitude is Superior
+
+To formally prove that comparing squared distances is equivalent to comparing distances, consider the distance $d = \sqrt{x^2+y^2+z^2}$ and threshold $r$.
+ 
+ **Proposition:** $d < r \iff d^2 < r^2$ for $d, r > 0$.
+ 
+ *Proof:*
+ The function $f(t) = t^2$ is **strictly increasing** for $t > 0$.
+ If $0 < d < r$, then applying the strictly increasing function $f(t) = t^2$ preserves the inequality order:
+ $$d^2 < r^2$$
+ Conversely, if $d^2 < r^2$, taking the positive square root ($\sqrt{\cdot}$, which is also strictly increasing for positive values) yields:
+ $$\sqrt{d^2} < \sqrt{r^2} \implies |d| < |r|$$
+ Since distance and threshold are non-negative ($d, r \ge 0$), this simplifies to $d < r$.
+ 
+ **Computational Complexity Argument:**
+ Let $C_{\sqrt{}}$ be the number of CPU cycles required to compute a square root.
+ Let $C_{mul}$ be the number of cycles for multiplication.
+ 
+ *   **Euclidean Check ($d < r$):** Requires computing $d = \sqrt{x^2+y^2+z^2}$ which is $O(C_{\sqrt{}} + 3C_{mul} + 2C_{add})$.
+ *   **Squared Check ($d^2 < r^2$):** Requires computing $d^2 = x^2+y^2+z^2$ which is $O(3C_{mul} + 2C_{add})$.
+ 
+ Because $C_{\sqrt{}} \gg C_{mul}$, the Squared Check is significantly more computationally efficient, especially when executed within a tight loop (e.g., updating thousands of entities).
+ 
+ ---
+ 
+
 
 ---
 

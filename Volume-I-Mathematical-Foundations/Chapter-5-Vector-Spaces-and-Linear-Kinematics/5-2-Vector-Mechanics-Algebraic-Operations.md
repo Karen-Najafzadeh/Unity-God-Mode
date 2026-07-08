@@ -1,3 +1,6 @@
+# Vector Mechanics Algebraic Operations
+---
+
 In **Volume I: Mathematical Foundations & Physical Intuition**, we transition from the "grammar" of code to the fundamental laws that govern the digital universe. Within **Chapter 5: Vector Spaces and Linear Kinematics**, mastering **Algebraic Operations** is what allows you to act as the architect of your own reality, rather than just a writer of scripts.
 
 ### 1. Vector Addition: Compounding Realities
@@ -136,7 +139,34 @@ void MoveCharacter()
 }
 ```
 
+### 5. Mathematical Formalism & Proofs
+
+To truly understand *why* these operations work, we must move beyond the code and look at the underlying vector space axioms in $\mathbb{R}^n$.
+
+#### 5.1 Vector Addition Properties
+Let $\vec{a} = (a_1, a_2, \dots, a_n)$ and $\vec{b} = (b_1, b_2, \dots, b_n)$.
+
+**Commutativity:** $\vec{a} + \vec{b} = \vec{b} + \vec{a}$
+*Proof:*
+$$\vec{a} + \vec{b} = (a_1+b_1, \dots, a_n+b_n)$$
+By the commutative property of real number addition, $a_i + b_i = b_i + a_i$.
+$$\vec{a} + \vec{b} = (b_1+a_1, \dots, b_n+a_n) = \vec{b} + \vec{a}$$
+
+#### 5.2 Vector Magnitude & Normalization
+For any vector $\vec{v} = (x, y, z)$, its magnitude is defined as $||\vec{v}|| = \sqrt{x^2 + y^2 + z^2}$ (from the Pythagorean Theorem).
+
+**Normalization:**
+A normalized vector $\hat{v}$ must satisfy $||\hat{v}|| = 1$.
+Given $\hat{v} = \frac{\vec{v}}{||\vec{v}||}$:
+$$||\hat{v}|| = ||\frac{\vec{v}}{||\vec{v}||}|| = \frac{1}{||\vec{v}||} \cdot ||\vec{v}|| = 1$$
+This proves that the normalization operation successfully projects any vector onto the unit hypersphere, independent of its original magnitude.
+
+#### 5.3 Vector Subtraction as Inverse Addition
+Subtraction is defined as adding the additive inverse: $\vec{a} - \vec{b} = \vec{a} + (-\vec{b})$, where $-\vec{b} = (-b_1, -b_2, \dots, -b_n)$.
+When calculating direction between two points $\vec{P}$ (Target) and $\vec{S}$ (Self), the displacement vector $\vec{D} = \vec{P} - \vec{S}$ represents the unique vector that, when added to $\vec{S}$, yields $\vec{P}$:
+$$\vec{S} + \vec{D} = \vec{S} + (\vec{P} - \vec{S}) = (\vec{S} - \vec{S}) + \vec{P} = \vec{0} + \vec{P} = \vec{P}$$
+
 ### Summary of Chapter 5 Operations
 By mastering these algebraic operations—**Addition** for compounding forces, **Subtraction** for calculating targets, **sqrMagnitude** for performance-optimized distance, and **Normalization** for consistent direction—you gain **Physical Intuition**. You stop guessing where your objects are going and begin defining the precise mathematical boundaries of your world.
 
-### [Next: Euclidean Distance Metrics](/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/Euclidean-Distance-Metrics.md)
+### [Next: Euclidean Distance Metrics](/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/5-3-Euclidean-Distance-Metrics.md)
