@@ -1,5 +1,6 @@
 # Vector Mechanics Algebraic Operations
 ---
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/5-2-Vector-Mechanics-Algebraic-Operations-FA.md)
 
 In **Volume I: Mathematical Foundations & Physical Intuition**, we transition from the "grammar" of code to the fundamental laws that govern the digital universe. Within **Chapter 5: Vector Spaces and Linear Kinematics**, mastering **Algebraic Operations** is what allows you to act as the architect of your own reality, rather than just a writer of scripts.
 

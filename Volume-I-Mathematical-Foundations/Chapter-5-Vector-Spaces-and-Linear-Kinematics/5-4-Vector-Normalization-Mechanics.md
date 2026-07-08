@@ -1,5 +1,8 @@
 # Vector Normalization Mechanics (The Magnitude Stripper)
 
+---
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/5-4-Vector-Normalization-Mechanics-FA.md)
+
 Welcome back to the architectural blueprint of the universe. Now that we understand that a vector is a packed package of numbers containing both a **direction** (which way) and a **magnitude** (how far), it’s time to look at one of the most common, critical operations you will ever perform in a game engine: **Normalization**.
 
 In the "God Mode" toolkit, normalization is your absolute equalizer. It is the process of stripping away how long a vector is, leaving you with nothing but its pure, unadulterated direction.
@@ -137,8 +140,4 @@ public class NormalizationMechanics : MonoBehaviour
 }
 
 ```
-
-### Quick Summary for the Channel:
-
-* Use `vector.normalized` (lowercase **n**) when you want a quick, clean directional copy of a vector but still need to keep the original vector (with its distance/magnitude data) intact for other calculations.
-* Use `vector.Normalize()` (uppercase **N**) when you are completely done with the original vector's length and want to overwrite it directly in memory to save a tiny sliver of CPU performance.
+### [5. Coordinate Spaces and Structural Transformations](/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/5-5-Coordinate-Spaces-Structural-Transformations.md)

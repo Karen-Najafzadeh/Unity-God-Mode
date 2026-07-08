@@ -1,4 +1,6 @@
+
 # Applied Kinematics & Constant Velocity Translation
+[نسخه فارسی](./FA/5-6-Applied-Kinematics-Constant-Velocity-Translation-FA.md)
 
 Welcome back to the architectural blueprint. Now that we have mastered scalars, coordinate vectors, normalization, and the shifting realms of coordinate spaces, we are finally ready to breathe life into our universe. We are moving from static geometry into **Applied Kinematics**, the science of how things move over time without worrying about the raw forces (like mass or gravity) causing that movement.
 

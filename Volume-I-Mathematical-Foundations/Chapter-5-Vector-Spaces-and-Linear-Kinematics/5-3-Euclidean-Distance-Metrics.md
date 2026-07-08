@@ -1,9 +1,11 @@
 # Euclidean Distance Metrics
 
 ---
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/5-3-Euclidean-Distance-Metrics-FA.md)
 
 
 In **Volume I, Chapter 5: Vector Spaces and Linear Kinematics**, we transition from the grammar of code to the fundamental laws of digital reality. At the heart of this chapter is the study of **Euclidean Distance Metrics**, the mathematical "measuring tape" used to determine the exact gap between two points in 3D space. 
+
 
 For a developer aspiring to "God Mode," understanding this isn't just about knowing how to measure a line; it’s about understanding the hidden "Math Tax" that the computer pays every time you ask it a question about distance.
 
@@ -138,4 +140,4 @@ By mastering the difference between `magnitude` and `sqrMagnitude`, you are prac
 In "Unity God Mode," you don't just solve the problem; you solve it in a way that respects the physical limitations and strengths of the hardware.
 
 
-### [Next: Vector Normalization Mechanics](/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/Vector-Normalization-Mechanics.md)
+### [Next: Vector Normalization Mechanics](/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/5-4-Vector-Normalization-Mechanics.md)

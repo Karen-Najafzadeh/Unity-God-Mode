@@ -1,5 +1,7 @@
 # Scalars and Coordinate Vectors
 ---
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/5-1-Scalars-and-Coordinate-Vectors-FA.md)
+
 ## Decoding the DNA of Space (Scalars vs. Vectors)
 
 Welcome to the architectural journey of the **Unity God Mode** curriculum. In this deep dive, we are marking a profound shift from the "Grammar" of standard programming to the "Physics of Reality." While basic coding focuses on how to write instructions, understanding spatial mathematics provides the absolute intuition required to act as the architect of a digital universe.
@@ -150,6 +152,4 @@ Mastering the boundary between a lonely scalar and a packed coordinate vector is
 
 ---
 
-### Next Up in the God Mode Curriculum:
-
-#### [Vector Mechanics & Algebraic Operations: Mastering the Math of Motion](./5-2-Vector-Mechanics-Algebraic-Operations.md)
+#### [Next: Vector Mechanics & Algebraic Operations: Mastering the Math of Motion](./5-2-Vector-Mechanics-Algebraic-Operations.md)

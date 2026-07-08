@@ -1,4 +1,6 @@
+
 # Coordinate Spaces and Structural Transformations
+[نسخه فارسی](./FA/5-5-Coordinate-Spaces-Structural-Transformations-FA.md)
 
 Welcome back to the architectural blueprint. Up until now, we’ve treated vectors like absolute values pinned to a single, unchanging universe. But if you want true "God Mode" control over a game engine, you have to master a mind-bending truth: **Space is relative.** In game development, there is no single "up," "forward," or "center." An object's position and direction depend entirely on the perspective, or **Coordinate Space** that you are looking at it from. Master this, and you master the matrix of the engine.
 
