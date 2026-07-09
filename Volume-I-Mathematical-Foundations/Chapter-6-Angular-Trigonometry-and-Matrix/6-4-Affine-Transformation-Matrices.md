@@ -1,5 +1,10 @@
 # God Mode Game Dev: Affine Transformation Matrices (Warping Reality)
 
+---
+
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/6-4-Affine-Transformation-Matrices-FA.md)
+
+
 Welcome back to the architectural blueprint. In our last entry, we uncovered the foundational grid system of Linear Algebra. Now, it's time to weaponize that knowledge. If linear algebra is the engine, **Affine Transformation Matrices** are the steering wheel that allows you to stretch, rotate, slide, and warp your game world at will.
 
 An **Affine Transformation** is a special kind of geometric mapping that changes coordinates but guarantees two vital rules remain unbroken:
@@ -195,12 +200,4 @@ public class AffineSpaceWarp : MonoBehaviour
 
 ---
 
-### Next Up in the God Mode Curriculum:
-
-#### [The Dot Product: Measuring Alignment and Peripheral Vision](https://www.google.com/search?q=/Volume-I-Mathematical-Foundations/Chapter-5-Vector-Spaces-and-Linear-Kinematics/The-Dot-Product.md)
-
----
-
-By mastering affine transformation matrices, you gain complete creative control over the engine's positioning systems. You stop working within the confines of standard space and start molding the universe to fit your specific gameplay demands.
-
-What core mathematical mechanic are we unlocking next? Let me know whenever you're ready!
+### [Next: Matrix Operations Determinants](./6-5-Matrix-Operations-Determinants.md)
