@@ -1,5 +1,10 @@
 # The Matrix Matrix (Linear Algebra Foundations)
 
+---
+
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/6-3-Linear-Algebra-Foundations-FA.md)
+
+
 Welcome to the most critical architectural blueprint in the **Unity God Mode** curriculum. If you want true, unadulterated control over a game engine, you have to master a mind-bending truth: **Space is fluid.** Until now, we’ve treated vectors as independent entities sliding around a static universe. But under the hood of Unity, there is a hidden wizard pulling the strings of reality: **Linear Algebra**.
 
 Linear algebra is the ultimate structural framework of game physics and graphics. It is the math of combining vectors, scaling entire worlds, and shifting spaces seamlessly. Let's strip away the terrifying, dry academic language of advanced math textbooks and look at how this beautiful system acts as the computational engine of your universe.
