@@ -1,5 +1,9 @@
 # Scalar & Vector Projections (The Shadow Casters)
 
+---
+
+[نسخه فارسی این مقاله را اینجا بخوانید](./FA/7-1-Scalar-Vector-Projections-FA.md)
+
 Welcome back to the architectural blueprint. Up until now, we’ve been building spaces, spinning them, and compounding them with matrices. Now, it’s time to focus on one of the most used spatial interrogation tools in game development: **Projections**.
 
 In the real world, when you shine a flashlight on an object, it casts a flat shadow onto the wall behind it. In game math, **Projection** is that exact same process calculated with vectors. You take a vector flying through 3D space, drop a virtual flashlight above it, and flatten it onto another directional line.
