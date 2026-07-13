@@ -36,7 +36,7 @@ To calculate these projections at the silicon level, we don't use slow geometric
 
 To find just the length of the shadow, we take the dot product of vector $\mathbf{a}$ and multiply it by the **normalized direction** of $\mathbf{b}$ (written as $\hat{\mathbf{b}}$):
 
-$$\text{scalar\_proj} = \mathbf{a} \cdot \hat{\mathbf{b}} = \frac{\mathbf{a} \cdot \mathbf{b}}{\Vert{}\mathbf{b}\Vert{}}$$
+$$\mathit{scalar\_proj} = \mathbf{a} \cdot \hat{\mathbf{b}} = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}$$
 
 If $\mathbf{b}$ is already a normalized unit vector (length of 1), the math collapses into the ultimate optimization shortcut: the scalar projection is *just* the raw dot product $\mathbf{a} \cdot \mathbf{b}$!
 
